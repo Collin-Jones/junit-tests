@@ -1,35 +1,47 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class StudentTest {
 
-    @Test
-    public void testingId(){
-        Student collin = new Student();
-        collin.setId(2);
+    Student collin = new Student();
 
+    @Before
+    public void theStudent() {
+        collin.setName("my name");
+        collin.setId(2);
+        collin.addGrades(75);
+        collin.addGrades(65);
+        collin.addGrades(84);
+        collin.addGrades(90);
+    }
+
+
+    @Test
+    public void testingId() {
         assertEquals(2, collin.getId());
     }
-    @Test
-    public void testingName(){
-        Student collin = new Student();
-        collin.setName("my name");
 
+    @Test
+    public void testingName() {
         assertEquals("my name", collin.getName());
     }
 
     @Test
-    public void testingCon(){
-        Student collin = new Student(2, "collin");
+    public void testingCon() {
         assertEquals(2, collin.getId());
-        assertEquals("collin", collin.getName());
+        assertEquals("my name", collin.getName());
     }
 
     @Test
-    public void testingGrades(){
-        Student collin = new Student();
+    public void testingGrades() {
         //.size is looking at the size of the grades array list
-        assertEquals(0, collin.getGrades().size());
+        assertEquals(4, collin.getGrades().size());
+    }
+
+    @Test
+    public void testingAverage() {
+        assertEquals(78.5, collin.getGradeAverage(), 0);
     }
 }

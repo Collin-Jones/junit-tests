@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Student {
     private long id;
     private String name;
-    private ArrayList <Integer> grades;
+    private ArrayList<Integer> grades;
 
     public Student() {
         this.grades = new ArrayList<>();
@@ -23,6 +23,9 @@ public class Student {
         this.name = name;
     }
 
+    public void addGrades(int grade){
+        this.grades.add(grade);
+    }
 
     public long getId() {
         return id;
@@ -34,5 +37,13 @@ public class Student {
 
     public ArrayList<Integer> getGrades() {
         return grades;
+    }
+
+    public double getGradeAverage() {
+        double sum = 0;
+        for (int grade : this.grades) {
+            sum += grade;
+        }
+        return sum / this.grades.size();
     }
 }
